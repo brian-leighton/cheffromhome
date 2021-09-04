@@ -1,0 +1,197 @@
+.input{
+    &__floating-label{
+        position: relative;
+
+        & > input {
+            width: 100%;
+            border-radius: 4px;
+            // padding: 1rem;
+        }
+        & input, label{
+            font-size: 1.8rem;
+            padding: 1rem;
+            font-family: $font-heading-primary;
+        }
+        & label {
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            transition: all .1s ease-in;
+        }
+        & input:focus, input:not(:placeholder-shown){
+            outline: 0;
+            border-color: transparent;
+            box-shadow: inset 0 0 0 2px $color-primary;
+        }
+
+        & input:focus{
+            box-shadow: inset 0 0 0 2px $color-secondary-2;
+        }
+        & input:focus + label, & input:not(:placeholder-shown) + label{
+            font-size: 1.4rem;
+            outline: none;
+            top: -1rem;
+            left: 1rem;
+            background: white;
+            padding: 0 .5rem;
+            color: rgba($color-secondary-2, .8);
+            // font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+    }
+    &__textarea {
+        padding: 2rem 5rem;
+        position: relative;
+
+        @include respond("phone"){
+            padding: 0;
+        }
+        & textarea, label {
+            font-size: 2.2rem;
+            font-family: $font-heading-primary;
+            transition: all .1s ease-in;
+        }
+        & textarea {
+            font-size: 1.7rem;
+            width: 100% !important;
+            padding: .9rem 1rem;
+            resize: none;
+        }
+        & textarea:focus{
+            outline: 0;
+            border: 2px solid $color-secondary-2;
+        }
+        & textarea:not(:placeholder-shown):not(:focus){
+            border: 2px solid $color-primary;
+        }
+        & label {
+            position: absolute;
+            top: 2.8rem;
+            left: 6rem;
+            letter-spacing: 1px;
+            padding: 0 1rem;
+            @include respond("phone"){
+                top: 1.2rem;
+                left:  1rem;
+            }
+        }
+        & textarea:focus + label, & textarea:not(:placeholder-shown) + label {
+            top: .8rem;
+            font-size: 1.5rem;
+            color: $color-secondary-2;
+            background: $color-white;
+            @include respond("phone"){
+                background-color: red;
+                top: -1.2rem;
+                left: 1rem;
+            }
+        }
+    }
+    &__select-group{
+        border-width: 1px;
+        font-size: 1.8rem;
+        font-family: $font-heading-primary;
+        border-width: 1px;
+        border: 1px solid #8F8F9D;
+        padding: .75rem 1rem;
+        min-width: 12.3rem;
+        & option {
+            opacity: .2;
+            font-size: 1.3rem;
+            font-family: $font-text-primary !important;
+            font-weight: 500;
+        }
+        & option:first-of-type{
+            display: none;
+            font-family: $font-heading-primary;
+        }
+        &:focus{
+            border: 2px solid $color-secondary-2;
+        }
+    }
+    &__select-group[rounded~="true"]{
+        border-radius: 4px !important;
+    }
+    &__locked-label{
+        background: red;
+        position: relative;
+        & span {
+            font-size: 1.3rem;
+            position: absolute;
+            top: -10px;
+            background: $color-white;
+            left: 3px;
+            font-family: $font-heading-primary;
+            color: rgba($color-secondary-2, .8);
+            letter-spacing: 1px;
+            padding: 0 4px;
+        }
+        & input{
+            width: 100%;
+            height: 100%;
+            font-size: 1.8rem;
+            padding: 0 .75rem;
+        }
+        & input:focus {
+            outline: 0;
+            border: 0;
+            box-shadow: inset 0 0 0 2px $color-secondary-2;
+        }
+        & label {
+            position: absolute;
+            top: -1.3rem;
+            left: 1.2rem;
+            z-index: 100;
+            // color: red;
+        }
+    }
+    &__locked-label[type*="name"]{
+        color: red;
+        flex: 1;
+        // width: min(30ch, 100%);
+    }
+    &__ingredient{
+        // max-width: 70rem;
+        // width: 100%;
+        background: chartreuse;
+        flex: 1 0 100%;
+        display: flex;
+        flex-wrap: wrap;
+        @include respond("phone"){
+            justify-content: center;
+
+        }
+    }
+    &__alt{
+
+    }
+    &__shopping-list{
+        margin-bottom: 2rem;
+        width: 35%;
+        margin: 0 auto;
+        // background: green;
+        display: flex;
+        flex-wrap: wrap;
+        & div.input__locked-label, & select {
+            margin-bottom: 6rem;
+        }
+        & select{
+             flex: 1;
+            }
+        @include respond("phone"){
+            width: 100%;
+            margin: 2rem 0;
+            & div.input__locked-label {
+                flex: 0 0 60%;
+            }
+            & select {
+                flex: 40%;
+            }
+            & div.input__locked-label, & select{ 
+                margin-bottom: 0;
+            }
+        }
+    }
+}

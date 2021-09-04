@@ -1,0 +1,165 @@
+.shopping-lists{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex: 1;
+    padding: 2rem;
+    gap: 1rem;
+    @include respond("tab-port"){
+    }
+    & ol {
+        flex: 0 0 20%;
+        min-width: 18rem;
+        background: $color-secondary-2;
+        height: max-content;
+        list-style: decimal inside none;
+        @include respond("tab-port"){
+            flex: 0 0 45%;
+        }
+        @include respond("phone"){
+            flex: 0 0 100%;
+        }
+    }
+    & ol h2 {
+        font-size: 2.6rem;
+        color: $color-tertiary-1;
+        font-weight: 400;
+        letter-spacing: 1px;
+        padding-left: 1rem;
+        padding: 1rem 0 1rem 1rem;
+        font-family: $font-text-primary;
+    }
+    & ol li {
+        text-decoration: none;
+        background: $color-grey-1;
+        padding: .25rem 1.5rem;
+        font-family: $font-heading-primary;
+        color: $color-grey-2;
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+        font-weight: 500;
+
+        &:last-of-type{
+            padding-bottom: 1.75rem;
+        }
+    }
+    &__edit{
+        min-height: 5rem;
+        width: 100%;
+        & > form {
+            max-width: 40rem;
+            width: initial;
+        }
+        & p {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            font-family: $font-heading-primary;
+            font-weight: 400;
+            text-align: center;
+        }
+        &--btn{
+            // toggle edit button
+            width: max-content;
+            margin: 0 auto;
+            border-radius: 2px;
+            padding: 1rem 1.6rem;
+            font-size: 1.6rem;
+            background: $color-secondary-2;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            color: $color-white;
+            font-family: $font-heading-primary;
+
+            &:hover{
+                cursor: pointer;
+                background-color: darken($color-secondary-2, 10%);
+            }
+        }
+
+        @include respond("phone"){
+            margin-top: -1rem;
+        }
+    }
+}
+
+.finalize-recipe-controls{
+    background: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    &__header{
+        min-height: 15rem;
+        color: $color-grey-1;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        // justify-content: space-around;
+        & h1 {
+            background: $color-secondary-2;
+            font-size: 3.5rem;
+            padding: 3rem 2rem;
+            margin-bottom: 1.5rem;
+            // padding-left: 2rem;
+            font-family: $font-text-primary;
+            font-weight: 400;
+        }
+        & h2 {
+            text-align: center;
+            font-size: 2.6rem;
+            font-family: $font-text-primary;
+            // color: $color-grey-2;
+            color: $color-secondary-1;
+            font-weight: 400;
+        }
+        @include respond("phone"){
+            & h1 {
+                padding: 1rem 2rem;
+            }
+            & h2 {
+                padding: 1rem 3rem;
+            }
+        }
+    }
+    &__section{
+        flex: 1 0 100%;
+        background: orange;
+    }
+
+    &__button{
+        width: max-content;
+        font-family: $font-heading-primary;
+        border-radius: 2px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: $color-white;
+        font-size: 1.3rem;
+        padding: .75rem 1.5rem;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        &--decline{
+            background-color: $color-red;
+            // background-color: $color-secondary-1;
+            color: $color-white;
+            // border: 2px solid $color-red;
+        }
+        &--accept{
+            background-color: $color-green;
+            // background-color: $color-white;
+            // border: 2px solid $color-green;
+            color: $color-white;
+            // background-color: $color-button-accept;
+        }
+        &--decline:hover{
+            background: darken($color-red, 10%);
+        }
+        &--accept:hover{
+            background: darken($color-green, 10%);
+        }
+        &--accept:hover,&--decline:hover{
+            transition: all .3s ease-in;
+        }
+    }
+
+}

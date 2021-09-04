@@ -1,0 +1,27 @@
+.createLesson{
+    max-width: 95vw;
+    margin: 0 auto;
+    position: relative;
+    background: $color-grey-2;
+
+    &::before{
+        content: "";
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+}
+
+.lesson{
+
+    &__form{
+        padding: 2rem;
+        border: .3rem solid red;
+    }
+}
+
+@supports(backdrop-filter: blur()){
+    .createLesson{
+        background-image: url("../../images/ChesterNew.jpg");
+    }
+}

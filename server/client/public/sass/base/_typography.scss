@@ -1,0 +1,98 @@
+.text{
+    font-family: $font-heading-primary;
+}
+.heading{
+    font-family: $font-text-primary;
+    
+    &__primary{
+        color: $color-primary;
+        font-family: $font-text-primary;
+        
+        &--large{
+            font-size: 3.5rem;
+        }
+    }
+
+    &__secondary{
+        font-weight: 600;
+        font-size: 2.4rem;
+        color:$color-grey-2;
+    }
+    
+    &__tertiary{
+        color:$color-grey-2;
+        
+        &--large{
+            font-weight: 300;
+            font-size: 2rem;
+        }
+
+        &--small{
+            font-size: 1.4rem;
+            font-weight: 300;
+        }
+
+        & > span {
+            font-weight: 500;
+        }
+    }
+}
+
+.recipe{
+    &__heading{
+
+        &--primary{
+            @include respond("tab-land"){
+                margin-left: 6rem;
+            }
+        }
+
+        &--shopping{
+            background-color: $color-primary;
+            & > h4 {
+                color: $color-white;
+            }
+        }
+    }
+}
+
+.list{
+    min-width: 26rem;
+
+    &__heading{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        &--primary{
+            background: $color-primary !important;
+            text-transform: uppercase;
+            padding: 1rem 1.5rem;
+            font-size: 1.5rem;
+            color: $color-white;
+            font-weight: 700;
+        }
+    }
+
+    &__item{
+        list-style: none;
+        font-size: 1.32rem;
+        background: $color-tertiary-1;
+        font-weight: 500;
+        text-transform: uppercase;
+        padding: 1rem 2.5rem;
+        // border-bottom: 2px solid $color-primary;
+
+        }
+
+    &__shopping{
+
+        @include respond("phone"){
+            &:first-of-type{
+                margin-top: 1.2rem;
+            }            
+            &:not(:last-of-type){
+                margin-bottom: 1.2rem;
+            }
+        }
+    }
+    }

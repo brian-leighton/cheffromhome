@@ -1,0 +1,54 @@
+.flex{
+    display: flex;
+
+    &__inline{
+        display: inline-flex;
+    }
+    
+    &__column{
+        flex-direction: column;
+    }
+
+    &__heading{
+        font-size: 2rem;
+        font-weight: 300;
+        font-family: $font-text-primary;
+        padding: 2rem 1rem;
+    }
+
+    &__justify{
+        &--center{
+            justify-content: center;
+        }
+        &--space-around{
+            justify-content: space-around;
+        }
+        &--end{
+            justify-content: flex-end;
+        }
+    }
+    &__grow{
+        flex: 1;
+    }
+    &__shrink{
+        flex: 0 1;
+    }
+
+    &__wrap{
+        flex-wrap: wrap;
+    }
+    &__no-wrap{
+        flex-wrap: nowrap;
+    }
+    &__gap{
+        &--2{
+            gap: 2rem;
+        }
+    }
+}
+
+@for $i from 1 through 12 {
+    .col-#{$i} {
+        flex: 0 0 (100% / (12 / $i) );
+    }
+}

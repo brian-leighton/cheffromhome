@@ -1,0 +1,91 @@
+.navigation{
+    padding-top: 3.5rem;
+    display: flex;
+    justify-content: center;
+    background: $background-gradient-1;
+
+    @include respond("phone"){
+        padding-top:6rem;
+    }
+
+    &__container{
+        flex: 0 0 95vw;
+        // background: red;
+    }
+    
+    &__link{
+        color:$color-white;
+        cursor: pointer;
+        text-decoration: none;
+        display: flex;
+        position: relative;
+        padding: .1rem .5rem;
+        
+        &--active {
+            fill: $color-tertiary-1;
+        }
+        
+        &::before{
+            content:"";
+            height: 2px;
+            background-color: $color-tertiary-1;
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            transition: all .4s ease-in-out;
+        }
+
+        &:hover::before{
+            background: darken($color-tertiary-1, 10%);
+            width: 90%;
+        }
+
+        &:hover > &--label{
+            color: $color-tertiary-1;
+        }
+        &:hover > .icon__container--navigation > svg{
+            fill: $color-tertiary-1;
+        }
+
+        &--container{
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+
+
+        }
+
+        &--label{
+            opacity: 1;
+            padding: .375em 1rem;
+            transition: all .4s ease-in-out;
+            font-family: $font-text-primary;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        
+    }
+    
+    &__search{
+        background: slateblue;
+    }
+    &__logo{
+        width: 7rem;
+        height: 7rem;
+        background-image: url('./../images/cooking_logo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        padding: 1rem;
+        position: fixed;
+        z-index:20000;
+        top: -.25rem;
+        left: 2vw;
+
+        @include respond("tab-land"){
+            position: absolute;
+        }
+    }
+
+}

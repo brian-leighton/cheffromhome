@@ -1,0 +1,156 @@
+.form{
+    width: 100%;
+    padding: 2rem;
+    padding-bottom: 10rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    @include respond("phone"){
+        padding: 2rem 0;
+    }
+    &__header{
+        font-family: $font-heading-primary;
+        color: $color-grey-2;
+        position: relative;
+        width: max-content;
+
+        &--primary{
+            font-size: 4.5rem;
+            margin: 0 auto 1.5rem auto;
+            &::after{
+                content:"";
+                width: 90%;
+                height: 2px;
+                background: $gradient-3;
+                position: absolute;
+                bottom: -3px;
+                left: 13px;
+            }
+        }
+
+        &--secondary{
+            font-size: 2.5rem;
+            margin: 3rem auto 3rem auto;
+            &::after{
+                content:"";
+                width: 90%;
+                height: 2px;
+                background: $gradient-3;
+                position: absolute;
+                bottom: -3px;
+                left: 9px;
+            }
+        }
+    }
+    & form {
+        // width: min(100%, 75rem);
+        flex: 0 1 64rem;
+        @include respond("tab-port"){
+            flex: 1 0 100%;
+        }
+    }
+    &__about, &__recipe{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.3rem 0;
+        flex: 0 1 64rem;
+        max-width: 75rem;
+        height: max-content;
+        @include respond("phone"){
+            gap: 2.5rem 0;
+            background: $color-grey-1;
+            padding: 2rem .5rem;
+        }
+    }
+    &__recipe{
+        // gap: 0;
+        padding: 2rem 2rem 4rem 2rem;
+        // min-width: 55rem;
+        @include respond("phone"){
+
+
+        }
+        &--controls{
+            // position: absolute;
+            margin-right: 0rem;
+            width: max-content;
+            top: 0;
+            padding: 1rem 1.6rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            background: $color-primary;
+            border: 3px;
+            color: $color-white;
+            font-family: $font-text-primary;
+            font-size: 1.1rem;
+            z-index: 100;
+            transition: all .3s;
+        }
+        &--controls:hover{
+            letter-spacing: 2px;
+        }
+    }
+    &__recipe-ingredients{
+        background: $color-white !important;
+        border-radius: 2px;
+        padding: 2rem;
+        flex: 0 0 90%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.2rem 0;
+        @include respond("small-screen"){
+            flex: 0 0 80%;
+        }
+        @include respond("tab-land"){
+            flex: 0 0 85%;
+        }
+        @include respond("tab-port"){
+            flex: 0 0 99%;
+        }
+        @include respond("phone"){
+            background: $color-grey-2;
+            align-items: center;
+            justify-content: center;
+            flex: 1 0 100%;
+            padding: .8rem;
+            & div[type*="name"]{
+                flex: 1 0 100%;
+                & > input {
+                    padding: 1.3rem;
+                }
+            }
+            & div[type*="quantity"], & div[type*="unit"]{
+               flex: 1 0 20%; 
+            }
+        }
+    }
+    &__recipe-directions{
+        background: $color-white;
+        flex: 1 0 100%;
+        max-width: 85rem;
+        padding: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        
+        &--inputContainer{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex: 0 0 100%;
+            gap: 1.1rem 0;
+            & > div.u-relative{
+                //Container for input/delete button
+                flex: 1 0 100%;
+            }
+            & > div.input__locked-label {
+                position: relative;
+            }
+            & div.input__locked-label input {
+                font-size: 1.8rem;
+                padding: 1rem .75rem;
+            }
+        }
+    }
+}
