@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {api} from '../../apis';
+// import {api} from '../../apis';
 import ForumPost from './ForumPost';
-import ForumResponse from './ForumResponse';
+// import ForumResponse from './ForumResponse';
 import {submitQuestion, submitResponse} from '../../actions';
 
 class Forum extends React.Component{
@@ -65,7 +65,6 @@ class Forum extends React.Component{
             <div className="forum__posts">
                 <div className="col-12 forum__heading">
                     <h1 className="heading u-center-text" onClick={() => console.log(this.props.comments.length)}>Join the discussion</h1>
-                    <h2 className="text u-center-text"></h2>
                 </div>
                 {this.props.comments.length > 0 ? this.props.comments.map((comment, index) => {
                     return <ForumPost index={index} comment={comment} key={index} submitResponse={this.props.submitResponse} user={this.props.user}/>

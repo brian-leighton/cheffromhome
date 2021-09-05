@@ -4,7 +4,7 @@ const SelectGroup = ({handleChange, label, options, size, placeholder, index, se
     
     const renderOptions = (optionArr) => {
         let result = [];
-        result.push(<option>{placeholder}</option>);
+        result.push(<option key={placeholder}>{placeholder}</option>);
         if(optionArr.length){
             for(let i = 0; i < optionArr.length; i++){
                 result.push(

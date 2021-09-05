@@ -1,16 +1,17 @@
-import Modal from "../../modal/Modal";
+// import Modal from "../../modal/Modal";
 import React, {useState} from 'react';
 import ShoppingListInput from '../Inputs/ShoppingListInput';
+import PhotoInput from '../Inputs/PhotoInput';
 
-let tempShopping = {
-    meat: ["ground beef", "pork chop", "chicken tit", "eyeball","ground beef", "pork chop", "chicken tit", "eyeball","ground beef", "pork chop", "chicken tit", "eyeball"],
-    vegetable: ["carrot", "eggplant", "peach", "coconut"],
-    dairy: ["creme anglais", "creme fraiche"],
-    dry: ["wrapper", "oil"]
-}
+// let tempShopping = {
+//     meat: ["ground beef", "pork chop", "chicken tit", "eyeball","ground beef", "pork chop", "chicken tit", "eyeball","ground beef", "pork chop", "chicken tit", "eyeball"],
+//     vegetable: ["carrot", "eggplant", "peach", "coconut"],
+//     dairy: ["creme anglais", "creme fraiche"],
+//     dry: ["wrapper", "oil"]
+// }
 
-const Finalize = ({handleInput, shoppingList, toggleShow}) => {
-    const [currentSection, changeSection] = useState(0);
+const Finalize = ({handleInput, handlePhotoInput, shoppingList, toggleShow, imgSrcData}) => {
+    const [currentSection, changeSection] = useState(1);
     const [isEditingList, editList] = useState(false);
 
     const renderShoppingList = (list) => {
@@ -53,7 +54,8 @@ const Finalize = ({handleInput, shoppingList, toggleShow}) => {
                 <h1 onClick={toggleShow}>Just a couple more steps before your recipe is finished!</h1>
                 {currentSection === 0 ?  <h2>Based on what you've told us already this is your recipes shopping list.</h2>: <h2>Finally, add a picture to show off the finished product.</h2>}
             </div>
-            {renderSection(currentSection)}
+            <PhotoInput handleInput={handlePhotoInput} imgSrcData={imgSrcData}/>
+            {/* {renderSection(currentSection)} */}
             <div className="finalize-recipe-controls">
                 <div className="finalize-recipe-controls__button finalize-recipe-controls__button--decline" onClick={setSection}>Back</div>
                 {currentSection === 1 ? <div className="finalize-recipe-controls__button finalize-recipe-controls__button--accept">Submit</div> : <div className="finalize-recipe-controls__button finalize-recipe-controls__button--accept" onClick={() => setSection(true)}>Add Picture</div>}

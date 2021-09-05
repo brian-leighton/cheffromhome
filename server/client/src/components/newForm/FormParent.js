@@ -6,7 +6,9 @@ import TipsForm from './RecipeCreation/TipsForm';
 import Finalize from './RecipeCreation/Finalize';
 import TextInputAlt from './Inputs/TextInputAlt';
 import SvgIcon from '../icons/SvgIcon';
-import Modal from '../modal/Modal';
+// import Modal from '../modal/Modal';
+
+import _ from 'lodash';
 
 class FormParent extends React.Component{
     constructor(props){
@@ -19,7 +21,7 @@ class FormParent extends React.Component{
             about: {
                 title: "",
                 cookTime: "",
-                thumbnail: {},
+                thumbnail: {src: "", alt:""},
                 difficulty: "",
                 description: "",
                 shopping: {
@@ -101,6 +103,37 @@ class FormParent extends React.Component{
             ingredientsTotal: this.state.ingredientsTotal + 1
         });
     }
+    handlePhotoInput = (e, attrb) => {
+        console.log('photo input', attrb);
+        let photoObj = {src:"", alt: ""};
+        let copyState = _.cloneDeep(this.state["about"]);
+        if(attrb === "alt"){
+            copyState["thumbnail"][attrb] = e.target.value;
+        } else {
+            this.formatImage(e.target.files, (value) => {copyState["thumbnail"]["src"] = value;});
+            // copyState["thumbnail"][attrb] = x;
+            console.log(copyState);
+        }
+        this.setState({
+            "about": copyState
+        })
+        // console.log(copyState);
+    }
+    formatImage = (file, callback) => {
+        var filesSelected = file;
+        var result = "";
+        if(filesSelected.length > 0) {
+            var fileReader = new FileReader();
+            var fileToLoad = filesSelected[0];
+            console.log(fileToLoad);
+
+            fileReader.onload = (fileLoadedEvent) => {
+                var srcData = fileLoadedEvent.target.result; // <-- data: base64
+                callback(srcData);
+            }
+            fileReader.readAsDataURL(fileToLoad);
+        }
+    }
     deleteInput = (index, section, key, totalVariableName) => {
         if(this.state[totalVariableName] <= 1) return;
         console.log(section);
@@ -145,16 +178,16 @@ class FormParent extends React.Component{
                     <RecipeForm recipe={this.state.recipe} handleInput={this.handleIngredientInput} inputTotal={this.state.ingredientsTotal} addInput={this.addIngredient} deleteInput={this.deleteInput}/>
                     <DirectionsForm renderInput={this.renderAltTextInput} addInput={this.addToArrayTotal} inputsTotal={this.state.directionsTotal}/>
                     <TipsForm renderInput={this.renderAltTextInput} addInput={this.addToArrayTotal} inputsTotal={this.state.tipsTotal}/>
-                    {/* <div className="col-12" style={{fontSize: "2rem"}}>
+                    <div className="col-12" style={{fontSize: "2rem"}}>
                         <pre>
                         {JSON.stringify(this.state, null, 2)}
                         </pre>
-                    </div> */}
+                    </div>
                 <div className="col-12 flex flex__justify--center">
                     <div className="btn__form--submit" onClick={() => {this.toggleShow('finalizing'); window.scrollTo(0,0); this.createShoppingList(this.state.recipe.ingredients, this.handleInput)}}>Finalize</div>
                 </div>
             </div>
-            {this.state.finalizing ? <Finalize handleInput={this.createShoppingList} shoppingList={this.state.about.shopping} toggleShow={this.toggleShow}/> : null}
+            {this.state.finalizing ? <Finalize imgSrcData={this.state.about.thumbnail.src} handlePhotoInput={this.handlePhotoInput} handleInput={this.createShoppingList} shoppingList={this.state.about.shopping} toggleShow={this.toggleShow}/> : null}
             </React.Fragment>
         )
     }
