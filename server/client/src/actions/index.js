@@ -6,6 +6,7 @@ import {validation} from  '../utils/validation';
 
 export const fetchRecipes = () => async (dispatch) => {
     const response = await api.recipes.get("/get");
+    console.log(response.data);
     dispatch({type:FETCH_RECIPES, payload: response.data});
 }
 
@@ -59,11 +60,12 @@ export const signOut = () => async (dispatch) => {
 }
 
 export const submitRecipe = (recipe, user) => async (dispatch) => {
-    console.log(user);
     if(user){
         let author = {author: user.username, userid: user._id}
-        const response = await api.recipes.post("/new", {author, recipe});
-        dispatch({type:SUBMIT_RECIPE, payload: response.payload })
+        let trimmedRecipe = {"about": {...recipe.about}, "recipe": {...recipe.recipe}};
+        console.log(trimmedRecipe);
+        const response = await api.recipes.post("/new", {author, trimmedRecipe});
+        // dispatch({type:SUBMIT_RECIPE, payload: response.payload });
     } else {
         dispatch({type: SUBMIT_FAILURE, payload: "You must be logged in to submit a recipe."})
     }

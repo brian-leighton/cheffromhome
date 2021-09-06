@@ -155,7 +155,7 @@
     &__recipe-creation{
         width: 100%;
         min-height: 100vh;
-        position: absolute;
+        position: fixed;
         top: 0;
         z-index: 2000000;
         background: $color-white;

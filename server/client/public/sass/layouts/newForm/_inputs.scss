@@ -194,4 +194,66 @@
             }
         }
     }
+    &__image{
+        display: flex;
+        flex-wrap: wrap;
+        // flex-direction: column;
+        height: 100%;
+        flex: 1;
+        // justify-content: space-between;
+
+        & div[class=input__file-container]{
+            height: 100%;
+        }
+        & input[type=file]{
+            position: relative;
+            // height: 100%;
+            width: 0;
+            visibility: hidden;
+        }
+        & input[type=text]{
+            font-size: 2.2rem;
+            flex: 0 1 40ch;
+            border: 0;
+            outline: 0;
+            border: 1px solid $color-primary;
+            border-radius: 0 2px 2px 0;
+            // background: red;;
+            // padding: 1rem .5rem;
+            // padding-left: .5rem;
+        }
+        & input, label{
+            font-family: $font-heading-primary;
+            padding: 1.2rem .6rem;
+            box-sizing: border-box;
+        }
+        & input:focus {
+            border: 1px solid $color-grey-2;
+        }
+        & label {
+            text-align: center;
+            background-color: $color-primary;
+            font-size: 2.2rem;
+            padding: 1.2rem 4rem;
+            font-weight: 500;
+            color: $color-white;
+            border-radius: 2px 0 0 2px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            display: inline-block;
+            // left: 0;
+        }
+        & > img {
+            min-width: 40rem;
+            max-width: 40rem;
+        }
+        &--container{
+            display: flex;
+            margin: auto 0;
+            justify-content: center;
+            height: max-content;
+            flex: 1;
+        }
+    }
 }

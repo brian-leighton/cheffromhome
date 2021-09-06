@@ -39,9 +39,9 @@ const recipeSchema = new Schema({
     about: {
         title: String,
         cookTime: String,
-        image: photo,
         difficulty: String,
-        paragraphs: Array,
+        description: String,
+        thumbnail: photo,
         shopping:{
             meat: Array,
             vegetable: Array,

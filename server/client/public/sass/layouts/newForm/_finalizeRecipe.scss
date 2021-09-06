@@ -90,17 +90,13 @@
     justify-content: center;
     gap: 2rem;
     &__header{
-        min-height: 15rem;
         color: $color-grey-1;
         display: flex;
-        flex: 1;
         flex-direction: column;
-        // justify-content: space-around;
         & h1 {
             background: $color-secondary-2;
             font-size: 3.5rem;
             padding: 3rem 2rem;
-            margin-bottom: 1.5rem;
             // padding-left: 2rem;
             font-family: $font-text-primary;
             font-weight: 400;

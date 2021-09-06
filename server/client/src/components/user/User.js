@@ -45,6 +45,7 @@ class User extends React.Component{
     renderContent(section){
         let result = [];
         let { user } = this.props;
+        console.log('here', user[section]);
         if(section){
             for(let i = 0; i < user[section].length; i++){
                 result.push(<RecipeCard key={i} data={user[section][i]}/>);

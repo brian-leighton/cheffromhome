@@ -8,26 +8,36 @@ module.exports = (app) => {
          recipesCollection = "recipes",
          userCollection = "users";
         app.post("/recipes/new", async (req, res) => {
-            
-            const {
-                basicInfo,
+            console.log('ROUTE HIT');
+            // console.log(req.body);
+            const {about, recipe} = req.body.trimmedRecipe;
+            const {author} = req.body;
+            const recipeObj = {
+                "author": req.body.author,
+                "posted": new Date().toUTCString(),
                 about,
-                recipe,
-                beginner,
-                shopping,
-                photo,
-            } = req.body.recipe;
-            const author = { author: req.body.author.author, userid: req.body.author.userid};
+                recipe}
+            console.log(author);
+        // console.log(req.body.recipe);           
+            // const {
+            //     basicInfo,
+            //     about,
+            //     recipe,
+            //     beginner,
+            //     shopping,
+            //     photo,
+            // } = req.body.recipe;
+            // const author = { author: req.body.author.author, userid: req.body.author.userid};
 
-            const recipeObj = new Recipe({
-                basicInfo,
-                about,
-                beginner,
-                photo,
-                recipe,
-                author,
-                posted: new Date().toUTCString()
-            });
+            // const recipeObj = new Recipe({
+            //     basicInfo,
+            //     about,
+            //     beginner,
+            //     photo,
+            //     recipe,
+            //     author,
+            //     posted: new Date().toUTCString()
+            // });
 
             db.collection(recipesCollection).insertOne(recipeObj);
             db.collection(userCollection).updateOne({_id: ObjectId(author.userid)}, {$push: {recipes: recipeObj}});
@@ -40,14 +50,15 @@ module.exports = (app) => {
                 const response = [];
                 // res.send("hello");
                 const recipes = await db.collection(recipesCollection).find({}).toArray();
+                console.log(recipes);
                 recipes.map((item) => {
                     // console.log(item.about.paragraphs[0], "here");
                     let snip = {
                         id: item._id,
-                        title:item.basicInfo.title,
+                        title:item.about.title,
                         author: item.author.author,
-                        description: item.about.paragraphs[0].slice(0, 144),
-                        thumbnail: item.basicInfo.thumbnail
+                        description: item.about.description.slice(0, 144),
+                        thumbnail: item.about.thumbnail
                     };
                     response.push(snip);
                 });
